@@ -18,11 +18,11 @@ public class HelloController {
     public String createChild() throws InterruptedException {
         Parent p = new Parent();
         p.setTitle("title 1");
-        Child c = new Child();
-        c.setContent("content");
+        Child c = Child.builder()
+                .content("tu hu con")
+                .parent(parentRepository.save(p))
+                .build();
 
-        c.setParent(parentRepository.save(p));
-        Thread.sleep(10_000L);
         childRepository.save(c);
 
         return "OK";
