@@ -22,7 +22,7 @@ public class HelloController {
                 .content("tu hu con")
                 .parent(parentRepository.save(p))
                 .build();
-
+        System.out.println("********************************");
         childRepository.save(c);
 
         return "OK";
