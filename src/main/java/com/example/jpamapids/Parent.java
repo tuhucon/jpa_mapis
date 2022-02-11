@@ -27,8 +27,8 @@ public class Parent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @OneToOne(mappedBy = "parent", optional = false, fetch = FetchType.LAZY)
-    Child child;
+//    @OneToOne(mappedBy = "parent", optional = false, fetch = FetchType.LAZY)
+//    Child child;
 
     @Column
     String title;

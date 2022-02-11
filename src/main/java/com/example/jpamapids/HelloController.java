@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 @RestController
 @RequiredArgsConstructor
 public class HelloController {
@@ -14,13 +17,17 @@ public class HelloController {
 
     final ChildRepository childRepository;
 
+    final AuthorRepository authorRepository;
+
+    final BookRepository bookRepository;
+
     @GetMapping("/create")
     public String createChild() throws InterruptedException {
         Parent p = new Parent();
         p.setTitle("title 1");
         Child c = Child.builder()
                 .content("tu hu con")
-                .parent(parentRepository.save(p))
+                .parent(p)
                 .build();
         System.out.println("********************************");
         childRepository.save(c);
@@ -42,5 +49,49 @@ public class HelloController {
         System.out.println("*************************************");
         parentRepository.findById(id);
         return "OK";
+    }
+
+    @GetMapping("/deleteChild")
+    public String deleteChild(@RequestParam Long id) {
+        Child c = childRepository.findById(id).get();
+        childRepository.delete(c);
+        return "OK";
+    }
+
+    @GetMapping("/deleteParent")
+    public String deleteParent(@RequestParam Long id) {
+        Parent p = parentRepository.findById(id).get();
+        parentRepository.delete(p);
+        return "OK";
+    }
+
+    @GetMapping("/selectAuthor")
+    public String getAuthor(@RequestParam Long id) {
+        Author a = authorRepository.findById(id).get();
+        for (var book: a.getBooks()) {
+            System.out.println(book);
+        }
+        return "OK";
+    }
+
+    @GetMapping("/insertAuthorAndBook")
+    public void insertAuthorAndBook() {
+        Author a = new Author();
+        a.setName("tu hu con");
+        a.setAge(ThreadLocalRandom.current().nextInt(1, 100));
+
+        Book b1 = new Book();
+        b1.setIsbn("isbn");
+        b1.setTitle("title");
+        a.getBooks().add(b1);
+
+        Book b2 = new Book();
+        b2.setIsbn("isbn");
+        b2.setTitle("title");
+        a.getBooks().add(b2);
+
+        bookRepository.save(b1);
+        bookRepository.save(b2);
+        authorRepository.save(a);
     }
 }
