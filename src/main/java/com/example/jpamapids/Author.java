@@ -2,6 +2,7 @@ package com.example.jpamapids;
 
 import lombok.Data;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,10 +18,10 @@ import java.util.List;
 public class Author {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.DETACH)
     @JoinColumn(name = "author_id")
     List<Book> books = new ArrayList<>();
 

@@ -68,7 +68,7 @@ public class HelloController {
     @GetMapping("/selectAuthor")
     public String getAuthor(@RequestParam Long id) {
         Author a = authorRepository.findById(id).get();
-        for (var book: a.getBooks()) {
+        for (var book : a.getBooks()) {
             System.out.println(book);
         }
         return "OK";
