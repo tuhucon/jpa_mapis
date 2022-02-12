@@ -28,4 +28,13 @@ public class FlushOrderController {
         b.setIsbn(id.toString());
         bookRepository.save(b);
     }
+
+    @GetMapping("/flushMode")
+    @Transactional
+    public void flushMode() {
+        Book b1 = bookRepository.findById(1L).get();
+        b1.setTitle("b1");
+        authorRepository.findAll();
+        bookRepository.findAll();
+    }
 }
