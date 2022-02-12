@@ -1,6 +1,8 @@
 package com.example.jpamapids;
 
 import lombok.Data;
+import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.NaturalIdCache;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +18,8 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
+    @NaturalId(mutable = true)
     String isbn;
 
     String title;

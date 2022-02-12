@@ -1,5 +1,13 @@
-package com.example.jpamapids;
+package com.example.jpamapids.controlle;
 
+import com.example.jpamapids.Author;
+import com.example.jpamapids.AuthorRepository;
+import com.example.jpamapids.Book;
+import com.example.jpamapids.BookRepository;
+import com.example.jpamapids.Child;
+import com.example.jpamapids.ChildRepository;
+import com.example.jpamapids.Parent;
+import com.example.jpamapids.ParentRepository;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

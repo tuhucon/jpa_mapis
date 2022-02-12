@@ -1,5 +1,8 @@
-package com.example.jpamapids;
+package com.example.jpamapids.controlle;
 
+import com.example.jpamapids.AuthorRepository;
+import com.example.jpamapids.Book;
+import com.example.jpamapids.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.engine.spi.ActionQueue;
 import org.springframework.transaction.annotation.Transactional;
