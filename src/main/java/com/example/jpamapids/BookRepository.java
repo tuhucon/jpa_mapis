@@ -1,9 +1,7 @@
 package com.example.jpamapids;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.jpamapids.entity.Book;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 public interface BookRepository extends NaturalRepository<Book, Long> {

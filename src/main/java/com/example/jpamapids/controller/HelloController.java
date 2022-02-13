@@ -1,20 +1,18 @@
-package com.example.jpamapids.controlle;
+package com.example.jpamapids.controller;
 
-import com.example.jpamapids.Author;
+import com.example.jpamapids.entity.Author;
 import com.example.jpamapids.AuthorRepository;
-import com.example.jpamapids.Book;
+import com.example.jpamapids.entity.Book;
 import com.example.jpamapids.BookRepository;
-import com.example.jpamapids.Child;
+import com.example.jpamapids.entity.Child;
 import com.example.jpamapids.ChildRepository;
-import com.example.jpamapids.Parent;
+import com.example.jpamapids.entity.Parent;
 import com.example.jpamapids.ParentRepository;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RestController

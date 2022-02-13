@@ -1,4 +1,4 @@
-package com.example.jpamapids;
+package com.example.jpamapids.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.NaturalId;

@@ -1,4 +1,4 @@
-package com.example.jpamapids;
+package com.example.jpamapids.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

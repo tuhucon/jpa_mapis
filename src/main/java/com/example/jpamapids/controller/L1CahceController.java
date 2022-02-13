@@ -1,9 +1,8 @@
-package com.example.jpamapids.controlle;
+package com.example.jpamapids.controller;
 
-import com.example.jpamapids.Book;
+import com.example.jpamapids.entity.Book;
 import com.example.jpamapids.BookRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

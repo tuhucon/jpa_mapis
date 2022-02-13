@@ -1,15 +1,13 @@
-package com.example.jpamapids;
+package com.example.jpamapids.entity;
 
 import lombok.Data;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +16,7 @@ import java.util.List;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @OneToMany(cascade = CascadeType.DETACH)
@@ -28,4 +26,7 @@ public class Author {
     Integer age;
 
     String name;
+
+    @Version
+    Integer version;
 }
