@@ -21,7 +21,7 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
     @Override
     List<Author> findAll();
 
-    @EntityGraph(attributePaths = {"books"})
+    @EntityGraph(attributePaths = {"books", "phones"})
     @Query(value = "select a from Author a where a.id = ?1")
     Optional<Author> chichchoe(Long id);
 

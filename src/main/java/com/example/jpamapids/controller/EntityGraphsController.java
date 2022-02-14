@@ -21,7 +21,7 @@ public class EntityGraphsController {
             Author author2 = authorRepository.findById(2L).get();
         } else {
             Author author2 = authorRepository.chichchoe(2L).get();
-            author2 = authorRepository.tacket(2L).get();
+//            author2 = authorRepository.tacket(2L).get();
 
             System.out.println("phone = " + author2.getPhones().size());
             System.out.println("book = " + author2.getBooks().size());

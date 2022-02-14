@@ -5,8 +5,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.data.jpa.repository.EntityGraph;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +18,9 @@ import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -35,15 +39,16 @@ public class Author {
     @OneToMany(mappedBy = "author")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    List<Book> books = new ArrayList<>();
+    Set<Book> books = new HashSet<>();
 
     @OneToMany(mappedBy = "author")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    List<Phone> phones = new ArrayList<>();
+    Set<Phone> phones = new HashSet<>();
 
     Integer age;
 
+    @Basic(fetch = FetchType.LAZY)
     String name;
 
     @Version
