@@ -29,8 +29,8 @@ public class Room {
     Long id;
 
     @ManyToMany
-    @JoinTable(name = "house_rooms",
-            joinColumns = @JoinColumn(name = "rooms_id"),
+    @JoinTable(name = "house_room",
+            joinColumns = @JoinColumn(name = "room_id"),
             inverseJoinColumns = @JoinColumn(name = "house_id"))
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
