@@ -22,35 +22,10 @@ public class InsertOrderController {
     @GetMapping("/insertOrder")
     @Transactional
     public void insertOrder() {
-        Author author = new Author();
-        author.setAge(12);
-        author.setName("tu hu con");
-
-        Parent parent = new Parent();
-        parent.setTitle(" chich choe");
-
-        Author author3 = authorRepository.findById(3L).get();
-        Author author4 = authorRepository.findById(4L).get();
-
-        Parent parent3 = parentRepository.findById(3L).get();
-        Parent parent4 = parentRepository.findById(4L).get();
-
-        int ran = ThreadLocalRandom.current().nextInt(0, 100_00);
-        author4.setName("ha ha ha" + ran);
-        author3.setName("hi hi hi" + ran);
-        parent4.setTitle("ha ha ha" + ran);
-        parent3.setTitle("hi hi hi" + ran);
-
-        parentRepository.save(parent4);
-        parentRepository.save(parent3);
-
-        authorRepository.save(author4);
-        authorRepository.save(author3);
-
-        parentRepository.save(parent);
-        authorRepository.save(author);
-        authorRepository.save(Author.builder().name("abasdf").build());
-        parentRepository.save(Parent.builder().title("abc").build());
+        parentRepository.save(Parent.builder().title("chich choe").id(36L).build());
+        authorRepository.save(Author.builder().name("hoa hoe").id(1016L).build());
+        authorRepository.save(Author.builder().name("abasdf").id(1017L).build());
+        parentRepository.save(Parent.builder().title("abc").id(37L).build());
 
     }
 }
