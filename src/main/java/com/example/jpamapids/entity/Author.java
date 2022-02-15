@@ -1,7 +1,10 @@
 package com.example.jpamapids.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.jpa.repository.EntityGraph;
 
@@ -24,6 +27,9 @@ import java.util.Set;
 
 @Data
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 //@NamedEntityGraph(
 //        name = "author-book-graph",
 //        attributeNodes = {

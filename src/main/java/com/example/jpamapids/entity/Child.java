@@ -24,7 +24,7 @@ public class Child {
     @Id
     Long id;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "id")
     @MapsId
     Parent parent;
