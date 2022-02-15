@@ -39,12 +39,12 @@ public class Author {
     @OneToMany(mappedBy = "author")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    Set<Book> books = new HashSet<>();
+    List<Book> books = new ArrayList<>();
 
     @OneToMany(mappedBy = "author")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    Set<Phone> phones = new HashSet<>();
+    List<Phone> phones = new ArrayList<>();
 
     Integer age;
 

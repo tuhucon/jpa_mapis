@@ -19,6 +19,7 @@ public class EntityGraphsController {
     public void loadParent(@RequestParam boolean useGraph) {
         if (useGraph == false) {
             Author author2 = authorRepository.findById(2L).get();
+            author2.getName();
         } else {
             Author author2 = authorRepository.chichchoe(2L).get();
 //            author2 = authorRepository.tacket(2L).get();
