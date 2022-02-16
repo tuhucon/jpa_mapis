@@ -1,34 +1,27 @@
 package com.example.jpamapids.entity;
 
+import com.example.jpamapids.event.AuthorCreatedEvent;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.data.domain.AbstractAggregateRoot;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedAttributeNode;
-import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 //@NamedEntityGraph(
 //        name = "author-book-graph",
@@ -36,10 +29,10 @@ import java.util.Set;
 //                @NamedAttributeNode("books")
 //        }
 //)
-public class Author {
+public class Author extends AbstractAggregateRoot<Author> {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @OneToMany(mappedBy = "author")
@@ -59,4 +52,9 @@ public class Author {
 
     @Version
     Integer version;
+
+    public Author() {
+        super();
+        registerEvent(new AuthorCreatedEvent(this));
+    }
 }
