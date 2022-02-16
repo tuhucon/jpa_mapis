@@ -45,5 +45,4 @@ public class AsyncService {
         Utils.printHikariConnectionMetric(meterRegistry);
         return new AsyncResult<>(repository.findById(id));
     }
-    ThreadPoolTaskExecutor x = new ThreadPoolTaskExecutor();
 }
