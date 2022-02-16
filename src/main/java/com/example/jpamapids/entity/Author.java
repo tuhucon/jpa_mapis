@@ -55,6 +55,6 @@ public class Author extends AbstractAggregateRoot<Author> {
 
     public Author() {
         super();
-        registerEvent(new AuthorCreatedEvent(this));
+//        registerEvent(new AuthorCreatedEvent(this));
     }
 }
