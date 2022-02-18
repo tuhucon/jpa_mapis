@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.data.domain.AbstractAggregateRoot;
+import org.springframework.data.jpa.repository.Modifying;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;

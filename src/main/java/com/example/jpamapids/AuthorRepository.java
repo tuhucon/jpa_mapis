@@ -28,4 +28,7 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
     @EntityGraph(attributePaths = "phones")
     @Query(value = "select a from Author a where a.id = ?1")
     Optional<Author> tacket(Long id);
+
+    @Query(value = "select * from Author where id < :id", nativeQuery = true)
+    List<Author> findAuthorWithIdLessThan(Long id);
 }
