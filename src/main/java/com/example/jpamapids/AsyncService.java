@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 @RequiredArgsConstructor
@@ -44,5 +45,12 @@ public class AsyncService {
         }
         Utils.printHikariConnectionMetric(meterRegistry);
         return new AsyncResult<>(repository.findById(id));
+    }
+
+    @Async
+    public Future<String> updateTest(TestRepository testRepository, Long id) {
+        System.out.println("run update Test in thread: " + Thread.currentThread().getName());
+        testRepository.updateNameJpql(id, "tu hu con: " + ThreadLocalRandom.current().nextInt(0, 100));
+        return new AsyncResult<>("OK");
     }
 }
