@@ -4,6 +4,7 @@ import com.example.jpamapids.entity.Author;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -31,4 +32,8 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
 
     @Query(value = "select * from Author where id < :id", nativeQuery = true)
     List<Author> findAuthorWithIdLessThan(Long id);
+
+
+    @Query(value = "select distinct a from Author a left join fetch a.books where a.id in :ids")
+    List<Author> findAuthorFetchBook(List<Long> ids);
 }
