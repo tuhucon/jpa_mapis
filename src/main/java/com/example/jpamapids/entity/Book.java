@@ -1,5 +1,6 @@
 package com.example.jpamapids.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,7 +8,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.NaturalId;
-import org.hibernate.annotations.NaturalIdCache;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,15 +24,16 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 public class Book {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-
     @ManyToOne
     @JoinColumn
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonBackReference
     Author author;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     @Column(unique = true, nullable = false)
     @NaturalId(mutable = true)

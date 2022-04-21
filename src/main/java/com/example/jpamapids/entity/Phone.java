@@ -1,5 +1,6 @@
 package com.example.jpamapids.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -15,15 +16,16 @@ import javax.persistence.ManyToOne;
 @Data
 public class Phone {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-
     @ManyToOne
     @JoinColumn
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonBackReference
     Author author;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     String number;
 }

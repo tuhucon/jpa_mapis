@@ -1,15 +1,13 @@
 package com.example.jpamapids.entity;
 
-import com.example.jpamapids.event.AuthorCreatedEvent;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.data.domain.AbstractAggregateRoot;
-import org.springframework.data.jpa.repository.Modifying;
 
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,24 +30,26 @@ import java.util.List;
 //)
 public class Author extends AbstractAggregateRoot<Author> {
 
+    Integer age;
+
+    @OneToMany(mappedBy = "author")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @JsonManagedReference
+    List<Book> books = new ArrayList<>();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @OneToMany(mappedBy = "author")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    List<Book> books = new ArrayList<>();
-
-    @OneToMany(mappedBy = "author")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    List<Phone> phones = new ArrayList<>();
-
-    Integer age;
-
-    @Basic(fetch = FetchType.LAZY)
+    //    @Basic(fetch = FetchType.LAZY)
     String name;
+
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JsonManagedReference
+    List<Phone> phones = new ArrayList<>();
 
     @Version
     Integer version;
