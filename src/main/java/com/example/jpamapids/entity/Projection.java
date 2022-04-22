@@ -25,5 +25,5 @@ public class Projection {
 
     String col3;
 
-    boolean deleted;
+    boolean deleted = false;
 }
