@@ -1,6 +1,7 @@
 package com.example.jpamapids.controller;
 
 import com.example.jpamapids.EnumTestRepository;
+import com.example.jpamapids.EnumTestService;
 import com.example.jpamapids.entity.EnumTest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,8 @@ public class EnumTestController {
 
     private final EnumTestRepository enumTestRepository;
 
+    private final EnumTestService enumTestService;
+
     @GetMapping("/enumTest")
     public EnumTest enumTest() {
         EnumTest enumTest = new EnumTest();
@@ -21,5 +24,10 @@ public class EnumTestController {
 
         var xxx = enumTestRepository.findById(1L).get();
         return xxx;
+    }
+
+    @GetMapping("/tranTest")
+    public void tranTest() {
+        enumTestService.transaction1();
     }
 }
