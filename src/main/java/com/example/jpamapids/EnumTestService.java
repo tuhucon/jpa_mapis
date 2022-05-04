@@ -20,7 +20,7 @@ public class EnumTestService {
 
     private final EnumTestRepository enumTestRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public void transaction1() {
         Utils.printHikariConnectionMetric(meterRegistry);
         System.out.println("******** get id = 1");
